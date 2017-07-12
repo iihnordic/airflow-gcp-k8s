@@ -112,7 +112,8 @@ def deploy_airflow(name, image_suffix):
             'image'] = repo + '/airflow-' + image_suffix + ':' + version
 
     execute_with_yaml('k8s/airflow-' + name + '-deploy.yaml',
-                      ['kubectl', 'create', '--namespace', namespace, '-f', '-'])
+                      ['kubectl', 'create', '--namespace', namespace, '-f', '-'],
+                     apply_changes)
 
 
 def deploy_upgradedb():
